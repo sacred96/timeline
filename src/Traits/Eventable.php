@@ -20,10 +20,10 @@ trait Eventable
         return $this->morphMany(Participation::class, 'eventable');
     }
 
-    public function joinHistory(History $timeline): void
+    public function joinHistory(History $history): void
     {
         $participation = new Participation([
-            'history_id'    => $timeline->getKey(),
+            'history_id'     => $history->getKey(),
             'eventable_id'   => $this->getKey(),
             'eventable_type' => $this->getMorphClass(),
         ]);
@@ -31,10 +31,10 @@ trait Eventable
         $this->participation()->save($participation);
     }
 
-    public function leaveConversation($timelineID): void
+    public function leaveConversation($historyID): void
     {
         $this->participation()->where([
-            'history_id'    => $timelineID,
+            'history_id'     => $historyID,
             'eventable_id'   => $this->getKey(),
             'eventable_type' => $this->getMorphClass(),
         ])->delete();

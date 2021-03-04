@@ -9,7 +9,7 @@ class Participation extends Model
     protected $table = 'timeline_participation';
     protected $fillable = ['history_id', 'eventable_id', 'eventable_type'];
 
-    public function timeline(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function history(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(History::class, 'history_id', 'id');
     }

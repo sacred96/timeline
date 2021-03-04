@@ -43,13 +43,13 @@ class History extends Model
      */
     public function start(array $participants = [], string $initialState = null)
     {
-        $timeline = $this->create(['state' => $initialState, 'finished' => false]);
+        $history = $this->create(['state' => $initialState, 'finished' => false]);
 
         if ( ! empty($participants)) {
-            $timeline->addParticipants($participants);
+            $history->addParticipants($participants);
         }
 
-        return $timeline;
+        return $history;
     }
 
     /**
