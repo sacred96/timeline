@@ -36,7 +36,7 @@ class HistoryService
     /**
      * @param  Eventable[]  $participants
      * @param  string|null  $initialState
-     * @return \Illuminate\Database\Eloquent\Model|$this
+     * @return \Illuminate\Database\Eloquent\Model|History
      */
     public function start(array $participants = [], string $initialState = null)
     {
