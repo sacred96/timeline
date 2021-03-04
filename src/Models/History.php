@@ -5,12 +5,6 @@ namespace Sacred96\Timeline\Models;
 use Illuminate\Database\Eloquent\Model;
 use Sacred96\Timeline\Traits\Eventable;
 
-/**
- * Class History
- *
- * @package Sacred96\Timeline\Models
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
 class History extends Model
 {
     protected $table = 'timeline_histories';
@@ -99,6 +93,19 @@ class History extends Model
         }
 
         return parent::delete();
+    }
+
+    /**
+     * @param  \Illuminate\Database\Eloquent\Model  $initiator
+     * @return \Sacred96\Timeline\Models\Participation|object|null
+     */
+    public function participantFromInitiator(Model $initiator)
+    {
+        return $this->participants()->where([
+            'history_id'     => $this->getKey(),
+            'eventable_id'   => $initiator->getKey(),
+            'eventable_type' => $initiator->getMorphClass(),
+        ])->first();
     }
 
 }
