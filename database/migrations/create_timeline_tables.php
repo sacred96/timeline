@@ -13,7 +13,7 @@ class CreateTimelineTables extends Migration
      */
     public function up()
     {
-        Schema::create('histories', function (Blueprint $table) {
+        Schema::create('timeline_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('state')->nullable();
             $table->boolean('finished')->default(false);
@@ -30,7 +30,7 @@ class CreateTimelineTables extends Migration
             $table->unique(['history_id', 'eventable_id', 'eventable_type'], 'participation_index');
 
             $table->foreign('history_id')
-                ->references('id')->on('histories')
+                ->references('id')->on('timeline_histories')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 
@@ -43,7 +43,7 @@ class CreateTimelineTables extends Migration
             $table->timestamps();
 
             $table->foreign('history_id')
-                ->references('id')->on('histories')
+                ->references('id')->on('timeline_histories')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('participation_id')
                 ->references('id')->on('timeline_participation')
@@ -60,6 +60,6 @@ class CreateTimelineTables extends Migration
     {
         Schema::dropIfExists('timeline_events');
         Schema::dropIfExists('timeline_participation');
-        Schema::dropIfExists('histories');
+        Schema::dropIfExists('timeline_histories');
     }
 }
