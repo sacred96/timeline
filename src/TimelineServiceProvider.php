@@ -13,6 +13,11 @@ class TimelineServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadTranslationsFrom(
+            dirname(__DIR__) . '/resources/lang',
+            'timeline'
+        );
+
         $this->publishMigrations();
     }
 
