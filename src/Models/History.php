@@ -99,7 +99,7 @@ class History extends Model
      * @param  \Illuminate\Database\Eloquent\Model  $initiator
      * @return \Sacred96\Timeline\Models\Participation|object|null
      */
-    public function participantFromInitiator(Model $initiator)
+    public function participantFromEventInitiator(Model $initiator)
     {
         return $this->participants()->where([
             'history_id'     => $this->getKey(),

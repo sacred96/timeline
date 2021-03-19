@@ -40,4 +40,9 @@ trait Eventable
         ])->delete();
     }
 
+    public function isTimelineInitiator(): bool
+    {
+        return in_array(TimelineInitiator::class, class_uses_recursive($this));
+    }
+
 }

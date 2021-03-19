@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    public const INITIATOR_SIDE = 'initiator_side';
+    public const SECOND_SIDE = 'second_side';
+
     protected $table = 'timeline_events';
     protected $fillable = ['history_id', 'participation_id', 'title', 'comment'];
     protected $touches = ['history'];
@@ -31,6 +34,11 @@ class Event extends Model
             'title'            => $title,
             'comment'          => $comment,
         ]);
+    }
+
+    public function side(): string
+    {
+        return $this->participant->eventable->isTimelineInitiator() ? self::INITIATOR_SIDE : self::SECOND_SIDE;
     }
 
 }

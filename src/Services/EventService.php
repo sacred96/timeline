@@ -30,7 +30,7 @@ class EventService
     /**
      * @var \Illuminate\Database\Eloquent\Model
      */
-    private $initiator;
+    private $eventInitiator;
 
     public function __construct(Event $event)
     {
@@ -59,7 +59,7 @@ class EventService
 
     public function from(Model $initiator): EventService
     {
-        $this->initiator = $initiator;
+        $this->eventInitiator = $initiator;
 
         return $this;
     }
@@ -78,7 +78,7 @@ class EventService
 
     public function push(): Model
     {
-        if ( ! $this->initiator) {
+        if ( ! $this->eventInitiator) {
             throw new \RuntimeException(trans('timeline::errors.initiator_not_set'));
         }
 
@@ -86,7 +86,7 @@ class EventService
             throw new \RuntimeException(trans('timeline::errors.event_title_not_set'));
         }
 
-        if ( ! $participant = $this->history->participantFromInitiator($this->initiator)) {
+        if ( ! $participant = $this->history->participantFromEventInitiator($this->eventInitiator)) {
             throw new \RuntimeException(trans('timeline::errors.partisipant_not_find'));
         }
 
