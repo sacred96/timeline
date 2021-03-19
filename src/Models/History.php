@@ -53,6 +53,10 @@ class History extends Model
     public function addParticipants(array $participants): History
     {
         foreach ($participants as $participant) {
+            if ( ! in_array(Eventable::class, class_uses_recursive($participant))) {
+                throw new \DomainException(trans('timeline::errors.partisipant_not_eventable'));
+            }
+
             $participant->joinHistory($this);
         }
 
