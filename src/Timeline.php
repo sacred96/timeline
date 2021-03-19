@@ -1,5 +1,7 @@
 <?php
 
+namespace Sacred96\Timeline;
+
 use Sacred96\Timeline\Models\Event;
 use Sacred96\Timeline\Models\History;
 use Sacred96\Timeline\Services\EventService;
