@@ -1,7 +1,14 @@
 {
     "name": "sacred96/timeline",
     "description": "Easy way to create timeline with Laravel",
+    "type": "library",
     "license": "MIT",
+    "keywords": [
+        "laravel",
+        "timeline",
+        "history",
+        "events"
+    ],
     "authors": [
         {
             "name": "Alexander Kurochkin",
@@ -9,10 +16,23 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": "^7.1",
+        "laravel/framework": "~5.8.0"
+    },
     "autoload": {
         "psr-4": {
             "sacred96\\timeline\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sacred96\\Timeline\\TimelineServiceProvider"
+            ],
+            "aliases": {
+                "Timeline": "Sacred96\\Timeline\\Facades\\TimelineFacade"
+            }
         }
     }
 }
