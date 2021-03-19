@@ -48,9 +48,9 @@ class HistoryService
         return $this->history->find($id);
     }
 
-    public function getEvents(): Collection
+    public function getEvents(string $sortDirection = 'asc'): Collection
     {
-        return $this->history->getEvents();
+        return $this->history->getEvents($sortDirection);
     }
 
     public function getParticipants(): \Illuminate\Support\Collection
@@ -89,6 +89,16 @@ class HistoryService
     public function removeParticipants(array $participants): History
     {
         return $this->history->removeParticipants($participants);
+    }
+
+    /**
+     * @return bool|null
+     *
+     * @throws \Exception
+     */
+    public function delete(): ?bool
+    {
+        return $this->history->delete();
     }
 
 }

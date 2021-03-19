@@ -31,7 +31,7 @@ class Timeline
      *
      * @param  Eventable[]  $participants
      * @param  string|null  $initialState
-     * @return \Illuminate\Database\Eloquent\Model|\Sacred96\Timeline\Services\HistoryService
+     * @return \Illuminate\Database\Eloquent\Model|History
      */
     public function create(array $participants = [], string $initialState = null)
     {

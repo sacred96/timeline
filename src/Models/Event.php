@@ -36,6 +36,11 @@ class Event extends Model
         ]);
     }
 
+    public function getAuthorAttribute()
+    {
+        return $this->participant->eventable;
+    }
+
     public function side(): string
     {
         return $this->participant->eventable->isTimelineInitiator() ? self::INITIATOR_SIDE : self::SECOND_SIDE;
