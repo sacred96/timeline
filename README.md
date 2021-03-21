@@ -10,9 +10,9 @@ From the command line, run:
 composer require sacred96/timeline
 ```
 
-Publish migrations:
+Publish the assets:
 ```
-php artisan vendor:publish --tag=timeline.migrations
+php artisan vendor:publish
 ```
 
 Run the migrations:
