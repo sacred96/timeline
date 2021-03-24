@@ -31,7 +31,7 @@ trait Eventable
         $this->participation()->save($participation);
     }
 
-    public function leaveConversation($historyID): void
+    public function leaveHistory($historyID): void
     {
         $this->participation()->where([
             'history_id'     => $historyID,

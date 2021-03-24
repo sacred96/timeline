@@ -70,7 +70,7 @@ class History extends Model
     public function removeParticipants(array $participants): History
     {
         foreach ($participants as $participant) {
-            $participant->leaveConversation($this->getKey());
+            $participant->leaveHistory($this->getKey());
         }
 
         return $this;
